@@ -32,7 +32,7 @@ class Allergy(models.Model):
     name    = models.CharField(max_length=45)
 
     class Meta: 
-        db_table = 'allergy'
+        db_table = 'allergies'
 
 class Product(models.Model): 
     korean_name  = models.CharField(max_length=45)
