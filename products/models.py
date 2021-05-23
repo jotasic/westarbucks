@@ -32,7 +32,7 @@ class Product(models.Model):
     english_name = models.CharField(max_length=45)
     description  = models.TextField()
     category     = models.ForeignKey(Category, on_delete=models.CASCADE)
-    nutrition    = models.ForeignKey(Nutrition, on_delete=models.CASCADE)
+    nutrition    = models.OneToOneField(Nutrition, on_delete=models.CASCADE)
     
     class Meta: 
         db_table = 'products'
