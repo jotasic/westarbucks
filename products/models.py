@@ -9,7 +9,7 @@ class Menu(models.Model):
 
 class Category(models.Model): 
     name = models.CharField(max_length=45)
-    menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name="category")
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
 
     class Meta: 
         db_table = 'categories'
@@ -32,14 +32,14 @@ class Product(models.Model):
     english_name = models.CharField(max_length=45)
     description  = models.TextField()
     category     = models.ForeignKey(Category, on_delete=models.CASCADE)
-    nutrition    = models.OneToOneField(Nutrition, on_delete=models.CASCADE, related_name="product")
+    nutrition    = models.OneToOneField(Nutrition, on_delete=models.CASCADE)
     
     class Meta: 
         db_table = 'products'
 
 class Image(models.Model): 
     image_url = models.CharField(max_length=2000)
-    product   = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="image")
+    product   = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta: 
         db_table = 'images'
