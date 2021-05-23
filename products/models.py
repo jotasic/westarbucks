@@ -27,12 +27,20 @@ class Nutrition(models.Model):
     class Meta: 
         db_table = 'nutritions'
 
+
+class Allergy(models.Model): 
+    name    = models.CharField(max_length=45)
+
+    class Meta: 
+        db_table = 'allergy'
+
 class Product(models.Model): 
     korean_name  = models.CharField(max_length=45)
     english_name = models.CharField(max_length=45)
     description  = models.TextField()
     category     = models.ForeignKey(Category, on_delete=models.CASCADE)
     nutrition    = models.OneToOneField(Nutrition, on_delete=models.CASCADE)
+    allergy = models.ManyToManyField(Allergy, db_table="allergy_products", related_name="allergy_product")
     
     class Meta: 
         db_table = 'products'
@@ -43,13 +51,5 @@ class Image(models.Model):
 
     class Meta: 
         db_table = 'images'
-
-class Allergy(models.Model): 
-    name    = models.CharField(max_length=45)
-    product = models.ManyToManyField(Product, db_table="allergy_products", related_name="allergy_product")
-
-    class Meta: 
-        db_table = 'allergy'
-
 
 
