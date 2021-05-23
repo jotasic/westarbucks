@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Menu(models.Model): 
     name = models.CharField(max_length=45)
 
@@ -27,7 +26,6 @@ class Nutrition(models.Model):
     class Meta: 
         db_table = 'nutritions'
 
-
 class Allergy(models.Model): 
     name    = models.CharField(max_length=45)
 
@@ -40,7 +38,7 @@ class Product(models.Model):
     description  = models.TextField()
     category     = models.ForeignKey(Category, on_delete=models.CASCADE)
     nutrition    = models.OneToOneField(Nutrition, on_delete=models.CASCADE)
-    allergy = models.ManyToManyField(Allergy, db_table="allergy_products", related_name="allergy_product")
+    allergy      = models.ManyToManyField(Allergy, db_table="allergy_products", related_name="allergy_product")
     
     class Meta: 
         db_table = 'products'
@@ -51,5 +49,3 @@ class Image(models.Model):
 
     class Meta: 
         db_table = 'images'
-
-
